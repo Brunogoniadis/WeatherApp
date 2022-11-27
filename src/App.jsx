@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MainContainer } from './styled.js';
+import { TempsContainer } from './styled.js';
+import { InfoTempContainer } from './styled.js'
+import { TextHeader } from './styled.js'
 
 function App() {
 
@@ -26,7 +30,7 @@ function App() {
       getWeather(position.coords.latitude, position.coords.longitude);
       setLocation(true)
     })
-    
+
 
   }, [])
 
@@ -44,20 +48,41 @@ function App() {
     )
   } else {
     return (
+
       <>
-        <h3>({weather['name']})</h3>
-        <hr/>
-        <ul>
-          <li>Temperatura atual: {weather['main']['temp']}°</li>
-          <li>Temperatura máxima: {weather['main']['temp_max']}°</li>
-          <li>Temperatura minima: {weather['main']['temp_min']}°</li>
-          <li>Pressão: {weather['main']['pressure']} hpa</li>
-          <li>Humidade: {weather['main']['humidity']}%</li>
-        </ul>
+        <MainContainer>
+          <TextHeader>
+            <h2>{weather['name']} - {weather['sys']['country']}</h2>
+            <h4>Umidade: {weather['main']['humidity']}%</h4>
+          </TextHeader>
+
+          <TempsContainer>
+
+            <InfoTempContainer>
+
+              {weather['main']['temp_min']}°
+              <h3>Min</h3>
+            </InfoTempContainer>
+            <InfoTempContainer>
+
+              {weather['main']['temp']}°
+              <h3>Atual</h3>
+            </InfoTempContainer>
+            <InfoTempContainer>
+
+              {weather['main']['temp_max']}°
+              <h3>Max</h3>
+            </InfoTempContainer>
+
+
+          </TempsContainer>
+
+        </MainContainer>
+
       </>
     );
   }
-    
-  
+
+
 };
 export default App;
