@@ -3,10 +3,8 @@ import axios from 'axios';
 
 function App() {
 
-  
-  const [location, setLocation] = useState(" ");
+  const [location, setLocation] = useState("");
   const [weather, setWeather] = useState(" ");
-
 
   let getWeather = async (lat, long) => {
     let res = await axios.get("http://api.openweathermap.org/data/2.5/weather", {
@@ -32,10 +30,23 @@ function App() {
 
   }, [])
 
+  if (location == false) {
     return (
       <>
-        <h3>Clima nas suas Coordenadas ({weather['weather'][0]['description']})</h3>
-        <hr />
+        Você precisa habilitar a localização no browser o/
+      </>
+    )
+  } else if (weather == false) {
+    return (
+      <>
+        Carregando o clima...
+      </>
+    )
+  } else {
+    return (
+      <>
+        <h3>({weather['name']})</h3>
+        <hr/>
         <ul>
           <li>Temperatura atual: {weather['main']['temp']}°</li>
           <li>Temperatura máxima: {weather['main']['temp_max']}°</li>
@@ -45,5 +56,8 @@ function App() {
         </ul>
       </>
     );
+  }
+    
+  
 };
 export default App;
