@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+  
+  const [location, setLocation] = useState(" ");
+  const [weather, setWeather] = useState(" ");
 
-export default App
+
+  let getWeather = async (lat, long) => {
+    let res = await axios.get("http://api.openweathermap.org/data/2.5/weather", {
+      params: {
+        lat: lat,
+        lon: long,
+        appid: `1922ec027bc8ed5184d84213b69a2646`,
+        lang: 'pt',
+        units: 'metric'
+      }
+    });
+    setWeather(res.data);
+    console.log(res.data)
+  }
+
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      getWeather(position.coords.latitude, position.coords.longitude);
+      setLocation(true)
+    })
+    
+
+  }, [])
+
+    return (
+      <>
+        <h3>Clima nas suas Coordenadas ({weather['weather'][0]['description']})</h3>
+        <hr />
+        <ul>
+          <li>Temperatura atual: {weather['main']['temp']}°</li>
+          <li>Temperatura máxima: {weather['main']['temp_max']}°</li>
+          <li>Temperatura minima: {weather['main']['temp_min']}°</li>
+          <li>Pressão: {weather['main']['pressure']} hpa</li>
+          <li>Humidade: {weather['main']['humidity']}%</li>
+        </ul>
+      </>
+    );
+};
+export default App;
