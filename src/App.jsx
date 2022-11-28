@@ -9,8 +9,8 @@ import { TextHeader } from './styled.js'
 
 function App() {
 
-  const [location, setLocation] = useState("");
-  const [weather, setWeather] = useState("0");
+  const [location, setLocation] = useState(false);
+  const [weather, setWeather] = useState(false);
 
   
 
