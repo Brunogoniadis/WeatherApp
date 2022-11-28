@@ -11,7 +11,8 @@ export default createGlobalStyle`
 
   * h4,h3, h2, h1, text {
   margin-bottom: 0.2rem;
-  color: #E3E3E3
+  color: "#1A1A1A
+"
 
 
 ;
