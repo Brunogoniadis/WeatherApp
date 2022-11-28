@@ -52,8 +52,7 @@ function App() {
         <MainContainer  >
           <TextHeader>
 
-            <h2>{weather['name']} - {weather['sys'][0]['country']}</h2>
-            <h4>{weather['weather'][0]['description']}</h4>
+
           </TextHeader>
 
           <TempsContainer>
