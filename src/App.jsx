@@ -9,14 +9,14 @@ import { TextHeader } from './styled.js'
 
 function App() {
 
-  const [location, setLocation] = useState(false);
-  const [weather, setWeather] = useState(false);
+  const [location, setLocation] = useState("false");
+  const [weather, setWeather] = useState("");
 
   
 
   
   let getWeather = async (lat, long) => {
-    let res = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
+    let res = await axios.get("http://api.openweathermap.org/data/2.5/weather", {
       params: {
         lat: lat,
         lon: long,
@@ -45,13 +45,20 @@ function App() {
         Você precisa habilitar a localização no browser o/
       </>
     )
+  } else if (weather == "") {
+    return (
+      <>
+        Carregando o clima...
+      </>
+    )
   } else {
     return (
 
       <>
         <MainContainer  >
           <TextHeader>
-            <h2>{weather['name']} - {weather['sys'][0]['country']}</h2>
+
+            <h2>{weather['name']} - {weather['sys']['country']}</h2>
             <h4>{weather['weather'][0]['description']}</h4>
           </TextHeader>
 
