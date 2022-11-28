@@ -10,7 +10,7 @@ import { TextHeader } from './styled.js'
 function App() {
 
   const [location, setLocation] = useState("");
-  const [weather, setWeather] = useState(" ");
+  const [weather, setWeather] = useState("false");
 
   
 
