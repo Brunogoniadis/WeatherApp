@@ -42,7 +42,7 @@ function App() {
   if (location == false) {
     return (
       <>
-        Você precisa habilitar a localização no browser o/
+        Você precisa habilitar a localização e atualizar a pagina!
       </>
     )
   } else if (weather == "") {
