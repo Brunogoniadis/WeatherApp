@@ -10,7 +10,7 @@ import { TextHeader } from './styled.js'
 function App() {
 
   const [location, setLocation] = useState("");
-  const [weather, setWeather] = useState("false");
+  const [weather, setWeather] = useState("0");
 
   
 
@@ -43,12 +43,6 @@ function App() {
     return (
       <>
         Você precisa habilitar a localização no browser o/
-      </>
-    )
-  } else if (weather == false) {
-    return (
-      <>
-        Carregando o clima...
       </>
     )
   } else {
