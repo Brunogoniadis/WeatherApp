@@ -32,7 +32,9 @@ export const TextHeader = styled.div`
     padding: -300px;
     line-height: 0.01em;
     margin-top: -15px;
-    svg {
+    h2,h4 {
+        
+        text-shadow: rgba(0, 0, 0, 0.2) 4px 4px 5px;
 
   }
 
@@ -48,11 +50,11 @@ export const InfoTempContainer = styled.div`
     display: flex;
     background-color: 
         ${props => 
-        props.variant <= 19 ? `rgba(138, 138, 255, 0.4);`:
-        props.variant <= 26 ? `rgba(0, 138, 138, 0.4)`:
-                              `rgba(255, 138, 139, 0.4)`
+        props.variant <= 19 ? `rgba(138, 138, 255, 0.2);`:
+        props.variant <= 26 ? `rgba(0, 138, 138, 0.2)`:
+                              `rgba(255, 138, 139, 0.2)`
         };
-    box-shadow: 0px 2px  2px rgba(0, 0, 0, 0.8);;
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px;;
     flex-direction: column;
     justify-content:center;
     height: 50px;
@@ -68,6 +70,6 @@ export const InfoTempContainer = styled.div`
 
     h4{
         margin-top: 2%;
-        margin-bottom:0.0.1rem
+        margin-bottom:0.0.1rem;
     }
 ` 
