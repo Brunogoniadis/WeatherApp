@@ -1,6 +1,6 @@
 # WeatherApp
 
-<h3>Aplicação para informar temperatura atual da localização do navegador</h3><br>
+<h3>Aplicação de tempo feita em ReactJS</h3><br>
 
 ![image](https://raw.githubusercontent.com/Brunogoniadis/WeatherApp/main/src/assets/print.jpeg)
 
@@ -14,6 +14,10 @@
    <img align="center" alt="tagMjvSchool-API" height="30" width="30" src="https://cdn-icons-png.flaticon.com/512/2164/2164832.png">
 </div>
 
+## <h3>Funcionamento:</h3>
+Conexão da latitude e longitude do navegador na aplicação, que comuinca com a API e retorna nome do estado, país, estado, clima atual e médias de temperatura.
+
+
 ##
-<h3>Link da aplicação:</h3> <br>
+<h3>Link da aplicação:</h3>
 https://weather-app-sand-gamma.vercel.app/
