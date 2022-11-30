@@ -12,21 +12,30 @@ function App() {
   const [location, setLocation] = useState("false");
   const [weather, setWeather] = useState("");
 
-  
 
-  
+
+
   let getWeather = async (lat, long) => {
-    let res = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
-      params: {
-        lat: lat,
-        lon: long,
-        appid: `1922ec027bc8ed5184d84213b69a2646`,
-        lang: 'pt',
-        units: 'metric'
+    try {
+      let res = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
+        params: {
+          lat: lat,
+          lon: long,
+          appid: `1922ec027bc8ed5184d84213b69a2646`,
+          lang: 'pt',
+          units: 'metric'
+        }
       }
-    });
-    setWeather(res.data);
-    console.log(res.data)
+      );
+      setWeather(res.data);
+      console.log(res.data)
+
+    } catch (error) {
+      console.log("error")
+    }
+
+
+
   }
 
   useEffect(() => {
@@ -66,13 +75,13 @@ function App() {
 
             <InfoTempContainer variant={weather['main']['temp_min']}>
 
-              <h4>{weather['main']['temp_min']}°</h4> 
+              <h4>{weather['main']['temp_min']}°</h4>
               <h3>Min</h3>
             </InfoTempContainer>
             <InfoTempContainer variant={weather['main']['temp']}>
 
               <h4> {weather['main']['temp']}°</h4>
-              
+
 
               <h3>Atual</h3>
 
